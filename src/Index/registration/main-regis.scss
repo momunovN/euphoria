@@ -1,0 +1,87 @@
+@import url(../index.scss);
+
+
+.sign-item{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.main-regis {
+    width: 1920px;
+    margin: 0 auto;
+    border-top: 1px solid #BEBCBD;
+}
+
+.main-regis {
+    display: flex;
+}
+
+.sign-title {
+    color: #333333;
+    font-size: 34px;
+    font-family: 'Core Sans A65';
+    font-weight: 600;
+    letter-spacing: 0.68px;
+    word-wrap: break-word;
+}
+
+.sign-in-page {
+    padding-top: 60px;
+    padding-left: 77px;
+    width: 568px;
+}
+
+.google-twiter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sing-google {
+    width: 567px;
+    height: 58px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px #3C4242 solid;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+}
+
+.sing-google,
+.sign-twitter {
+    text-align: center;
+    color: #8A33FD;
+    font-size: 22px;
+    font-family: Causten;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.sign-twitter {
+    width: 567px;
+    height: 58px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px #3C4242 solid;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+}
+
+.sign-or{
+    display: flex;
+    align-items: center;
+    gap: 23px;
+}
+
+.sign-or hr {
+    width: 247.50px;
+    height: 2px;
+    border: none;
+    background: rgba(102, 102, 102, 0.25);
+}
+
