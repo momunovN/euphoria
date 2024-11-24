@@ -1,7 +1,7 @@
 @import url(../index.scss);
 
 
-.sign-item{
+.sign-item {
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -72,7 +72,7 @@
     display: flex;
 }
 
-.sign-or{
+.sign-or {
     display: flex;
     align-items: center;
     gap: 23px;
@@ -85,3 +85,44 @@
     background: rgba(102, 102, 102, 0.25);
 }
 
+.btn_show-hide {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.password_span {
+    width: 568px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+
+    & p {
+        color: #3C4242;
+        font-size: 18px;
+        font-family: Causten;
+        font-weight: 400;
+        letter-spacing: 0.36px;
+        word-wrap: break-word;
+    }
+}
+
+.pass-inp {
+    width: 558px;
+    height: 58px;
+    border: 1px solid #3C4242;
+    outline: none;
+    border-radius: 8px;
+    padding-left: 10px;
+
+}
+
+.show-img{
+    color: #E5004C;
+}
+
+.hide-img, .show-img{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
