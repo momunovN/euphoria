@@ -5,13 +5,14 @@ import Profile from "./Index/profile"; // Путь к вашему компон�
 import { AuthProvider } from "./Index/Auth/AuthContext";
 import PrivateRoute from "./Index/Auth/PrivateRoute";
 import Registration from './Index/registration/regis';
-
+import FormSignUp from "./Index/registration/signUp";
 const App = () => {
   return (
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Registration />} />
+        <Route path="/register" element={<FormSignUp />} />
         {/* Защищенный маршрут для профиля */}
         {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
         {/* Добавьте другие защищенные маршруты по мере необходимости */}
