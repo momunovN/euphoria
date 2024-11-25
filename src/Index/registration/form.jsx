@@ -13,30 +13,13 @@ const FormSign = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const { login } = useAuth();
+  const { login = () => {} } = useAuth() || {}; 
   const navigate = useNavigate();
-
-  const validateForm = () => {
-    if (!email || !password) {
-      setError("Пожалуйста, заполните все поля");
-      return false;
-    }
-    if (password.length < 6) {
-      setError("Пароль должен содержать не менее 6 символов");
-      return false;
-    }
-    return true;
-  };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setError("");
-
-    if (!validateForm()) return;
-
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("http://localhost:3000/login",  {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,8 +29,8 @@ const FormSign = () => {
 
       if (response.ok) {
         const userData = await response.json();
-        login(userData);
-        navigate("/home"); // Перенаправление после успешного входа
+        login(userData); // Используйте login
+        navigate("/home");
       } else {
         const data = await response.json();
         setError(data.error || "Неверный email или пароль");

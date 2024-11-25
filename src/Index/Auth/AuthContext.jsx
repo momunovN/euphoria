@@ -1,17 +1,22 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null); // Важно: инициализируйте с null
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
-  // Проверка сохраненной авторизации при загрузке
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setIsAuthenticated(true);
-      setUser(JSON.parse(storedUser));
+    try {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        setIsAuthenticated(true);
+        setUser(parsedUser);
+      }
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      localStorage.removeItem('user');
     }
   }, []);
 
@@ -27,6 +32,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
   };
 
+  // Важно: возвращайте все методы
   return (
     <AuthContext.Provider value={{ 
       isAuthenticated, 
@@ -40,5 +46,12 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  
+  // Добавьте проверку контекста
+  if (context === null) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  
+  return context;
 };
