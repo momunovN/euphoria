@@ -6,7 +6,7 @@ import GoogleImg from "../images/Google.svg";
 import TwitterImg from "../images/twitter.svg";
 import HideView from "../images/HideView.svg";
 import ShowView from "../images/ShowView.svg";
-import RightSignIn from "../images/rightSignIn.svg";
+// import RightSignIn from "../images/rightSignIn.svg";
 
 const FormSign = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,8 +36,7 @@ const FormSign = () => {
     if (!validateForm()) return;
 
     try {
-      // Запрос к вашему API для аутентификации
-      const response = await fetch("http://localhost:3000/login", { // Обновленный URL
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +46,7 @@ const FormSign = () => {
 
       if (response.ok) {
         const userData = await response.json();
-        login(userData); // Сохранение токена и информации о пользователе в контексте
+        login(userData);
         navigate("/home"); // Перенаправление после успешного входа
       } else {
         const data = await response.json();
@@ -93,52 +92,28 @@ const FormSign = () => {
           </div>
           <div className="password">
             <span className="password_span">
-              <p>Password</p>
-              <div className="hide">
-                <button
-                  type="button"
-                  className=" btn_show-hide"
-                  onClick={togglePasswordVisibility}
-                >
-                  {showPassword ? (
-                    <span className="hide-img">
-                      <img src={HideView} alt="Hide" />
-                      Hide
-                    </span>
-                  ) : (
-                    <span className="show-img">
-                      <img src={ShowView} alt="Show" />
-                      Show
-                    </span>
-                  )}
-                </button>
-              </div>
+              Password
             </span>
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               name="Password"
-              className="pass-inp"
+              className="password-inp"
               required
-              minLength="6"
             />
-            <a href="/reset-password" className="pass-res-link">
-              Forget your password
-            </a>
-          </div>
-          <div className="sign-bnt">
-            <button type="submit" className="sign-in-btn">
-              Sign In <img src={RightSignIn} className="sign-in-img" alt="" />
+            <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
+              <img src={showPassword ? HideView : ShowView} alt="Toggle Password Visibility" />
             </button>
-            <span className="sign-in-descr">
-              Don't have an account?
-              <a href="/signup" className="sign-up-link">
-                Sign up
-              </a>
-            </span>
           </div>
+          <button type="submit" className="sign-in-button">Sign In</button>
         </form>
+        <span className="sign-in-descr">
+          Don't have an account?
+          <button onClick={() => navigate("/signup")} className="sign-up-link">
+            Sign up
+          </button>
+        </span>
       </div>
     </div>
   );
