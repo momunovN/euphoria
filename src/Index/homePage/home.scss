@@ -1,0 +1,135 @@
+@import url(../index.scss);
+
+
+
+.logo-header {
+    display: flex;
+    align-items: end;
+    max-width: 267px;
+
+    p {
+        color: #3C4242;
+        font-size: 34.06px;
+        font-family: Mintaka;
+        font-weight: 400;
+        word-wrap: break-word;
+        text-decoration: underline 1.5px #3C4242;
+
+    }
+
+
+    .logo_vec-header {
+        padding-left: 32px;
+        position: absolute;
+    }
+}
+
+
+.search-all {
+    width: 267px;
+    height: 44px;
+    background: var(--primary-input);
+    border-radius: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+
+
+    & {
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+}
+
+.search-input-all {
+    display: flex;
+    width: 267px;
+    align-items: center;
+}
+
+
+
+.search-input-all input:not(:placeholder-shown)+.search-icon-all {
+    opacity: 0;
+
+}
+
+
+.search-input-all input:not(:placeholder-shown)~.search-text-all {
+    opacity: 0;
+}
+
+
+
+.search-text-all {
+    position: absolute;
+    top: 45px;
+    padding-left: 45px;
+    // left: 1210px;
+    text-align: center;
+    color: #807D7E;
+    font-size: 18px;
+    font-family: Causten;
+    font-weight: 400;
+    word-wrap: break-word;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.search-icon-all {
+    position: absolute;
+    padding-left: 20px;
+    // left: 1183px;
+    color: #807D7E;
+}
+
+
+.header-all {
+    width: 1237px;
+    height: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-item {
+    display: flex;
+    align-items: center;
+}
+
+.header-item {
+    display: flex;
+    align-items: center;
+    gap: 76px
+}
+
+
+.header-details{
+    display: flex;
+    gap: 40px;
+    a {
+        color: #807D7E;
+        font-size: 22px;
+        font-family: Causten;
+        font-weight: 500;
+        word-wrap: break-word;
+        text-decoration: none;
+    }
+}
+
+.like{
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    button{
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

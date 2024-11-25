@@ -11,7 +11,8 @@ body,*{
     padding: 0;
 }
 
-button{
+button, input{
+    outline: none;
     border: none;
 }
 
@@ -32,3 +33,7 @@ button{
     font-weight: normal;
     src: local('Core Sans A 65 Bold'), url('./font/CoreSansA65Bold.woff') format('woff');
     }
+
+:root{
+    --primary-input: #F6F6F6;
+}

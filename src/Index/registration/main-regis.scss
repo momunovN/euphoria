@@ -1,5 +1,9 @@
 @import url(../index.scss);
-
+.sign-in-page{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
 
 .sign-item {
     display: flex;
@@ -97,6 +101,7 @@
     display: flex;
     align-items: center;
 
+
     & p {
         color: #3C4242;
         font-size: 18px;
@@ -115,14 +120,168 @@
     border-radius: 8px;
     padding-left: 10px;
 
+    & {
+        color: #3C4242;
+        font-size: 18px;
+        font-family: Causten;
+        font-weight: 400;
+        letter-spacing: 0.36px;
+        word-wrap: break-word;
+    }
+
+    & {
+        color: #E5004C !important;
+    }
 }
 
-.show-img{
+.show-img {
     color: #E5004C;
+    text-align: right;
+
+    font-size: 18px;
+    font-family: Causten;
+    font-weight: 400;
+    word-wrap: break-word
 }
 
-.hide-img, .show-img{
+.hide-img {
+    text-align: right;
+    color: #807D7E;
+    font-size: 18px;
+    font-family: Causten;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.hide-img,
+.show-img {
     display: flex;
     gap: 15px;
     align-items: center;
+}
+
+
+.email-inp {
+    width: 557px;
+    padding-left: 10px;
+    border-radius: 8px;
+    color: #E5004C !important;
+    height: 58px;
+    border: 1px #3C4242 solid;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+}
+
+.email-inp {
+    color: #3C4242;
+    font-size: 18px;
+    font-family: Causten;
+    font-weight: 400;
+    letter-spacing: 0.36px;
+    word-wrap: break-word;
+}
+
+
+.email-username {
+    color: #3C4242;
+    font-size: 18px;
+    font-family: Causten;
+    font-weight: 400;
+    letter-spacing: 0.36px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    outline: none;
+}
+
+
+.sign-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.password {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 10px;
+}
+
+.pass-res-link {
+    text-align: right;
+    color: #3C4242;
+    font-size: 16px;
+    font-family: Causten;
+    font-weight: 400;
+    text-decoration: underline;
+    word-wrap: break-word;
+}
+
+.sign-in-img {
+    display: none;
+    /* По умолчанию скрыто */
+    opacity: 0;
+    /* Начальное состояние для анимации */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.sign-in-btn {
+    width: 167px;
+    height: 54px;
+
+    background: #8A33FD;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+
+    & {
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        font-family: Causten;
+        font-weight: 500;
+        word-wrap: break-word;
+    }
+
+    &:hover .sign-in-img {
+        display: block;
+        /* Убедитесь, что элемент отображается */
+        opacity: 1;
+    }
+}
+
+
+.sign-in-descr {
+    color: #3C4242;
+    font-size: 16px;
+    font-family: Causten;
+    font-weight: 400;
+    word-wrap: break-word;
+
+
+    .sign-up-link {
+        color: #3C4242;
+        font-size: 16px;
+        font-family: Causten;
+        font-weight: 400;
+        text-decoration: underline;
+        word-wrap: break-word;
+    }
+}
+
+.sign-bnt{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

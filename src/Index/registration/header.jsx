@@ -43,7 +43,7 @@ const Header = () => {
 
                 <img src={Search} alt="" className="search-icon" />
                 <span className="search-text">Search</span>
-                <div className="icon-searchs"></div>
+                {/* <div className="icon-searchs"></div> */}
               </div>
             </div>
             <div className="drop-btn">
