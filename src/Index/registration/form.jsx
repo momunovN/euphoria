@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Auth/AuthContext"; // Предполагается, что у вас есть контекст аутентификации
+import { useAuth } from "../Auth/AuthContext";
 import "./main-regis.scss";
 import GoogleImg from "../images/Google.svg";
 import TwitterImg from "../images/twitter.svg";
@@ -14,7 +14,7 @@ const FormSign = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { login } = useAuth(); // Предполагается, что метод login сохранит токен в контексте
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -37,7 +37,7 @@ const FormSign = () => {
 
     try {
       // Запрос к вашему API для аутентификации
-      const response = await fetch("/api/login", {
+      const response = await fetch("http://localhost:3000/login", { // Обновленный URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const FormSign = () => {
               <div className="hide">
                 <button
                   type="button"
-                  className="btn_show-hide"
+                  className=" btn_show-hide"
                   onClick={togglePasswordVisibility}
                 >
                   {showPassword ? (
