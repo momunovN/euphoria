@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 import "./main-regis.scss";
+import "./regis.scss";
+import "../index.scss";
 import GoogleImg from "../images/Google.svg";
 import TwitterImg from "../images/twitter.svg";
 import HideView from "../images/HideView.svg";
@@ -13,13 +16,13 @@ const FormSign = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login = () => {} } = useAuth() || {}; 
+  const { login = () => {} } = useAuth() || {};
   const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/login",  {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,6 +79,16 @@ const FormSign = () => {
           <div className="password">
             <span className="password_span">
               Password
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="toggle-password"
+              >
+                <img
+                  src={showPassword ? HideView : ShowView}
+                  alt="Toggle Password Visibility"
+                />
+              </button>
             </span>
             <input
               type={showPassword ? "text" : "password"}
@@ -85,18 +98,22 @@ const FormSign = () => {
               className="password-inp"
               required
             />
-            <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
-              <img src={showPassword ? HideView : ShowView} alt="Toggle Password Visibility" />
-            </button>
           </div>
-          <button type="submit" className="sign-in-button">Sign In</button>
+          <div className="btn-span">
+            <button type="submit" className="sign-in-button">
+              Sign In
+            </button>
+            <span className="sign-in-descr">
+              Don't have an account?
+              <button
+                onClick={() => navigate("/signup")}
+                className="sign-up-link"
+              >
+                Sign up
+              </button>
+            </span>
+          </div>
         </form>
-        <span className="sign-in-descr">
-          Don't have an account?
-          <button onClick={() => navigate("/signup")} className="sign-up-link">
-            Sign up
-          </button>
-        </span>
       </div>
     </div>
   );

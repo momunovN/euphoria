@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "./header";
-import Main from "./main";
+import FormSignUp from "./signUp";
 import './regis.scss'
 import '../index.scss'
 const Registration = () =>{
     return(
         <div>
             <Header/>
-            <Main/>
+            <FormSignUp/>
         </div>
 
     )

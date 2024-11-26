@@ -110,6 +110,10 @@
         letter-spacing: 0.36px;
         word-wrap: break-word;
     }
+
+    .toggle-password{
+        background: none;
+    }
 }
 
 .pass-inp {
@@ -161,7 +165,7 @@
 }
 
 
-.email-inp {
+.email-inp, .password-inp {
     width: 557px;
     padding-left: 10px;
     border-radius: 8px;
@@ -174,7 +178,7 @@
     display: flex;
 }
 
-.email-inp {
+.email-inp , .password-inp{
     color: #3C4242;
     font-size: 18px;
     font-family: Causten;
@@ -204,7 +208,6 @@ input {
 .sign-input {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 30px;
 }
 
@@ -284,4 +287,17 @@ input {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+
+// .sign-in-button{
+
+// }
+
+
+.btn-span{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
 }

@@ -1,123 +1,129 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
+import "./main-regis.scss";
+import GoogleImg from "../images/Google.svg";
+import TwitterImg from "../images/twitter.svg";
 
 const FormSignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const validateForm = () => {
+    if (!name || !email || !password) {
+      setError("Пожалуйста, заполните все поля");
+      return false;
+    }
+    if (password.length < 6) {
+      setError("Пароль должен содержать не менее 6 символов");
+      return false;
+    }
+    return true;
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setError("");
 
-    // Простая валидация
-    if (password !== confirmPassword) {
-      setError("Пароли не совпадают");
-      return;
-    }
-
-    if (password.length < 6) {
-      setError("Пароль должен содержать минимум 6 символов");
-      return;
-    }
+    if (!validateForm()) return;
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name,
-          email,
-          password
-        }),
+        body: JSON.stringify({ name, email, password }),
       });
 
       if (response.ok) {
         const userData = await response.json();
-        login(userData); // Автоматический вход после регистрации
-        navigate("/profile"); // Перенаправление на профиль
+        login(userData);
+        navigate("/home");
       } else {
         const data = await response.json();
         setError(data.error || "Ошибка регистрации");
       }
     } catch (err) {
-      setError("Ошибка сети. Попробуйте позже.");
+      setError("Ошибка регистрации. Попробуйте позже.");
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <div className="form-container">
-      <form onSubmit={handleSignUp} className="form">
-        <h2>Регистрация</h2>
-        
-        {error && <div className="error-message">{error}</div>}
-        
-        <div className="form-group">
-          <label htmlFor="name">Имя</label>
+    <div className="sign-item">
+      {error && <div className="error-message">{error}</div>}
+      <div className="google-twiter">
+        <button className="sing-google">
+          <img src={GoogleImg} alt="" />
+          Continue With Google
+        </button>
+        <button className="sign-twitter">
+          <img src={TwitterImg} alt="" />
+          Continue With Twitter
+        </button>
+      </div>
+      <div className="sign-or">
+        <hr /> OR <hr />
+      </div>
+      <form onSubmit={handleSignUp} className="sign-input">
+        <div className="name">
+          <span>Full Name</span>
           <input
             type="text"
-            id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            name="Name"
+            className="name-inp"
             required
-            placeholder="Введите ваше имя"
           />
         </div>
-        
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <div className="email-username">
+          <span>Email address</span>
           <input
             type="email"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            name="Email"
+            className="email-inp"
             required
-            placeholder="Введите email"
           />
         </div>
-        
-        <div className="form-group">
-          <label htmlFor="password">Пароль</label>
+        <div className="password">
+          <span className="password_span">Password</span>
           <input
-            type="password"
-            id="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            name="Password"
+            className="password-inp"
             required
-            placeholder="Введите пароль"
           />
+          <button 
+            type="button" 
+            onClick={togglePasswordVisibility} 
+            className="toggle-password"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
         </div>
-        
-        <div className="form-group">
-          <label htmlFor="confirmPassword">Подтвердите пароль</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            placeholder="Повторите пароль"
-          />
-        </div>
-        
-        <button type="submit" className="btn-submit">
-          Зарегистрироваться
-        </button>
-        
-        <div className="form-footer">
-          <p>
-            Уже есть аккаунт? 
-            <a href="/login" className="link">Войти</a>
-          </p>
-        </div>
+        <button type="submit" className="sign-up-button">Sign Up</button>
       </form>
+      <span className="sign-in-descr">
+        Already have an account?
+        <button onClick={() => navigate("/login")} className="sign-in-link">
+          Sign in
+        </button>
+      </span>
     </div>
   );
 };

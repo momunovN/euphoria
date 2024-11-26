@@ -1,24 +1,18 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "./Index/homePage/home";
-import Profile from "./Index/profile"; // Путь к вашему компоненту профиля
-import { AuthProvider } from "./Index/Auth/AuthContext";
-import PrivateRoute from "./Index/Auth/PrivateRoute";
+import { Routes, Route } from 'react-router-dom';
 import Registration from './Index/registration/regis';
-import FormSignUp from "./Index/registration/signUp";
-const App = () => {
+import Main from './Index/registration/main';
+import FormSignUp from './Index/registration/signUp';
+import Home from './Index/homePage/home';
+
+function App() {
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Registration />} />
-        <Route path="/register" element={<FormSignUp />} />
-        {/* Защищенный маршрут для профиля */}
-        {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
-        {/* Добавьте другие защищенные маршруты по мере необходимости */}
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route path="/login" element={<Main />} />
+      <Route path="/signup" element={<Registration />} />
+      <Route path="/home" element={<Home />} />
+      {/* Другие маршруты */}
+    </Routes>
   );
-};
+}
 
 export default App;
